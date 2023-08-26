@@ -76,7 +76,7 @@ function initCalendar() {
 initCalendar();
 
 
-//prev month
+//Prev month
 function prevMonth() {
   month--;
   if (month < 0) {
@@ -86,7 +86,7 @@ function prevMonth() {
   initCalendar();
 }
 
-//next month
+//Next month
 function nextMonth() {
   month++;
   if (month > 11) {
@@ -147,3 +147,26 @@ function gotoDate() {
   //If invalid date
   alert("Invalid date");
 }
+
+
+const addEventBtn = document.querySelector('.add-event'),
+  addEventContainer = document.querySelector('.add-event-wrapper'),
+  addEventCloseBtn = document.querySelector('.close'),
+  addEventTitle = document.querySelector('.event-name'),
+  addEventFrom = document.querySelector('.event-time-from'),
+  addEventTo = document.querySelector('.event-time-to');
+
+  
+addEventBtn.addEventListener('click', () => {
+  addEventContainer.classList.toggle('active');
+});
+
+addEventCloseBtn.addEventListener('click', () => {
+  addEventContainer.classList.remove('active');
+});
+
+document.addEventListener('click', (e) => {
+  if(e.target !== addEventBtn && !addEventContainer.contains(e.target)){
+    addEventContainer.classList.remove('active');
+  }
+});
